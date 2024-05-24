@@ -1,8 +1,37 @@
 import React from "react";
-import { List, StyleSheet, Text } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 const ListScreenComponent = () => {
-    return <Text>Hi</Text>
+
+    const contacts = [
+        { name: "Mario" },
+        { name: "Marco" },
+        { name: "Maria" },
+        { name: "Miriam" },
+        { name: "Marcello" },
+        { name: "Marta" },
+        { name: "Mamma" },
+        { name: "Mariace festa" },
+        { name: "Mimmo" },
+        { name: "Merluzzo" },
+        { name: "Motorola" }
+    ]
+
+    function listRow(name) {
+        return <Text> - {name}</Text>
+    }
+
+    function list() {
+        return <
+            FlatList 
+            data={contacts} 
+            renderItem={ ({item}) => {
+                return listRow(item.name)
+            }}
+            />
+    }
+
+    return list()
 }
 
 const syles = StyleSheet.create({
