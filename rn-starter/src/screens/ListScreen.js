@@ -4,21 +4,21 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 const ListScreenComponent = () => {
 
     const contacts = [
-        { name: "Mario", key: "1" },
-        { name: "Marco", key: "2" },
-        { name: "Maria", key: "3" },
-        { name: "Miriam", key: "4" },
-        { name: "Marcello", key: "5" },
-        { name: "Marta", key: "6" },
-        { name: "Mamma", key: "7" },
-        { name: "Mariace festa", key: "8" },
-        { name: "Mimmo", key: "9" },
-        { name: "Merluzzo", key: "10" },
-        { name: "Mario", key: "11" }
+        { name: "Mario", age: 22, key: "1" },
+        { name: "Marco", age: 24, key: "2" },
+        { name: "Maria", age: 43, key: "3" },
+        { name: "Miriam", age: 53, key: "4" },
+        { name: "Marcello", age: 23, key: "5" },
+        { name: "Marta", age: 32, key: "6" },
+        { name: "Mamma", age: 55, key: "7" },
+        { name: "Mariace festa", age: 31, key: "8" },
+        { name: "Mimmo", age: 13, key: "9" },
+        { name: "Merluzzo", age: 22, key: "10" },
+        { name: "Mario", age: 88, key: "11" }
     ]
 
-    function listRow(name) {
-        return <Text style={styles.cellStyle}> - {name}</Text>
+    function listRow(contact) {
+        return <Text style={styles.cellStyle}> - {contact.name} - {contact.age}</Text>
     }
 
     function list() {
@@ -26,7 +26,7 @@ const ListScreenComponent = () => {
             showsVerticalScrollIndicator={false}
             data={contacts} 
             renderItem={ ({item}) => {
-                return listRow(item.name)
+                return listRow(item)
             }}
             />
     }
@@ -37,8 +37,11 @@ const ListScreenComponent = () => {
 const styles = StyleSheet.create({
     cellStyle: {
         backgroundColor: "red",
-        marginVertical: 50,
-        marginStart: 10
+        paddingVertical: 10,
+        marginVertical: 40,
+        marginHorizontal: 10,
+        borderWidth: 2,
+        borderColor: "blue"
     }
 })
 
