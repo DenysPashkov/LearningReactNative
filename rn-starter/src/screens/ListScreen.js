@@ -18,7 +18,7 @@ const ListScreenComponent = () => {
     ]
 
     function listRow(contact) {
-        return <Text style={styles.cellStyle}> - {contact.name} - {contact.age}</Text>
+        return <Text style={styles.cellStyle}> Name: {contact.name} - Age: {contact.age}</Text>
     }
 
     function list() {
