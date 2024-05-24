@@ -23,6 +23,7 @@ const ListScreenComponent = () => {
 
     function list() {
         return < FlatList 
+            showsVerticalScrollIndicator={false}
             data={contacts} 
             renderItem={ ({item}) => {
                 return listRow(item.name)
