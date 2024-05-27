@@ -2,14 +2,14 @@ import React from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
 
   function presentationText() {
     return <Text style={styles.text}>Hello 3</Text>;
   }
 
   function gotoComponentFunction() {
-    console.log("go to Component")
+    props.navigation.navigate("Components")
   }
   function gotoComponent() {
     return <Button 
@@ -19,7 +19,7 @@ const HomeScreen = () => {
   };
 
   function gotoListScreenFunction() {
-    console.log("go to List")
+    props.navigation.navigate("List")
   }
 
   function gotoListScreen() {
