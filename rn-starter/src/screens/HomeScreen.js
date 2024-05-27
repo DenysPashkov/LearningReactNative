@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const HomeScreen = () => {
 
@@ -7,14 +8,26 @@ const HomeScreen = () => {
     return <Text style={styles.text}>Hello 3</Text>;
   }
 
-  const gotoComponent = () => {
+  function gotoComponentFunction() {
+    console.log("go to Component")
+  }
+  function gotoComponent() {
     return <Button 
     title="go to Components screen"  
-    onPress={ () => {
-      console.log("button pressed")
-    }}
+    onPress={ () => {gotoComponentFunction()}}
     />;
   };
+
+  function gotoListScreenFunction() {
+    console.log("go to List")
+  }
+
+  function gotoListScreen() {
+    return <TouchableOpacity
+            onPress={ () => {gotoListScreenFunction()}}>
+      <Text>Go to List Screen</Text>
+    </TouchableOpacity>
+  }
 
   function returningView() {
     return (
@@ -22,6 +35,7 @@ const HomeScreen = () => {
         <Text>Hello</Text>
         {presentationText()}
         {gotoComponent()}
+        {gotoListScreen()}
       </View>
     );
   }
