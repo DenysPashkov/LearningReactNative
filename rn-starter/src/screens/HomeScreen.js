@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}) => {
     return <TouchableOpacity
             style={styles.navigationLinkStyle}
             onPress={ () => gotoViewByName("Images")}>
-      <Text>Go to List Screen</Text>
+      <Text>Go to List of Images</Text>
     </TouchableOpacity>
   }
 
