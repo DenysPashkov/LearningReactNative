@@ -2,29 +2,37 @@ import React from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const HomeScreen = (props) => {
+const HomeScreen = ({navigation}) => {
 
   function presentationText() {
     return <Text style={styles.text}>Hello 3</Text>;
   }
 
-  function gotoComponentFunction() {
-    props.navigation.navigate("Components")
+  function gotoViewByName(name) {
+      navigation.navigate(name)
   }
-  function gotoComponent() {
-    return <Button 
-    title="go to Components screen"  
-    onPress={ () => {gotoComponentFunction()}}
-    />;
-  };
 
-  function gotoListScreenFunction() {
-    props.navigation.navigate("List")
-  }
+  function gotoComponent() {
+      return <TouchableOpacity   
+        style={styles.navigationLinkStyle}
+        onPress={ () => gotoViewByName("Components")}
+      >
+        <Text>go to Components screen</Text>
+      </TouchableOpacity>
+  };
 
   function gotoListScreen() {
     return <TouchableOpacity
-            onPress={ () => {gotoListScreenFunction()}}>
+            style={styles.navigationLinkStyle}
+            onPress={ () => gotoViewByName("List")}>
+      <Text>Go to List Screen</Text>
+    </TouchableOpacity>
+  }
+
+  function gotoImagesListScreen() {
+    return <TouchableOpacity
+            style={styles.navigationLinkStyle}
+            onPress={ () => gotoViewByName("Images")}>
       <Text>Go to List Screen</Text>
     </TouchableOpacity>
   }
@@ -32,10 +40,12 @@ const HomeScreen = (props) => {
   function returningView() {
     return (
       <View>
-        <Text>Hello</Text>
         {presentationText()}
-        {gotoComponent()}
-        {gotoListScreen()}
+        <View style={styles.navigationLinksStyle}>
+          {gotoComponent()}
+          {gotoListScreen()}
+          {gotoImagesListScreen()}
+        </View>
       </View>
     );
   }
@@ -47,6 +57,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
   },
+  navigationLinksStyle: {
+    flexDirection: 'col', // Arrange children horizontally
+    justifyContent: 'center', // Horizontally center the children
+    alignItems: 'center', // Vertically center the children (optional)
+  },
+  navigationLinkStyle: {
+    marginBottom: 20
+  }
 });
 
 export default HomeScreen;
