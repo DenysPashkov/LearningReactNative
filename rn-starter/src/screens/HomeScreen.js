@@ -37,6 +37,14 @@ const HomeScreen = ({navigation}) => {
     </TouchableOpacity>
   }
 
+  function GoToCounterScreen() {
+    return <TouchableOpacity
+            style={styles.navigationLinkStyle}
+            onPress={ () => gotoViewByName("Counter")}>
+              <Text>Go to List of Counter screen</Text>
+    </TouchableOpacity>
+  }
+
   function returningView() {
     return (
       <View>
@@ -45,6 +53,7 @@ const HomeScreen = ({navigation}) => {
           <GoToComponent/>
           {gotoListScreen()}
           {gotoImagesListScreen()}
+          <GoToCounterScreen/>
         </View>
       </View>
     );
