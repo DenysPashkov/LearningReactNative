@@ -12,7 +12,7 @@ const HomeScreen = ({navigation}) => {
       navigation.navigate(name)
   }
 
-  function gotoComponent() {
+  function GoToComponent() {
       return <TouchableOpacity   
         style={styles.navigationLinkStyle}
         onPress={ () => gotoViewByName("Components")}
@@ -42,7 +42,7 @@ const HomeScreen = ({navigation}) => {
       <View>
         {presentationText()}
         <View style={styles.navigationLinksStyle}>
-          {gotoComponent()}
+          <GoToComponent/>
           {gotoListScreen()}
           {gotoImagesListScreen()}
         </View>
