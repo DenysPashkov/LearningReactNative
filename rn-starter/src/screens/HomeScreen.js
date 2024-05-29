@@ -53,6 +53,14 @@ const HomeScreen = ({navigation}) => {
     </TouchableOpacity>
   }
 
+  function GoToColorManagement() {
+    return <TouchableOpacity
+        style={styles.navigationLinkStyle}
+        onPress={ () => gotoViewByName("ColorManagement")} >
+        <Text style={styles.navigationTextStyle}>Go to List Color Management screen</Text>
+    </TouchableOpacity>
+  }
+
   function returningView() {
     return (
       <View>
@@ -63,6 +71,7 @@ const HomeScreen = ({navigation}) => {
           {gotoImagesListScreen()}
           <GoToCounterScreen/>
           <GoToColorsScreen/>
+          <GoToColorManagement/>
         </View>
       </View>
     );
