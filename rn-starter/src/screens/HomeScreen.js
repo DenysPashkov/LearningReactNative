@@ -17,7 +17,7 @@ const HomeScreen = ({navigation}) => {
         style={styles.navigationLinkStyle}
         onPress={ () => gotoViewByName("Components")}
       >
-        <Text>go to Components screen</Text>
+        <Text style={styles.navigationTextStyle}>Go to Components screen</Text>
       </TouchableOpacity>
   };
 
@@ -25,7 +25,7 @@ const HomeScreen = ({navigation}) => {
     return <TouchableOpacity
             style={styles.navigationLinkStyle}
             onPress={ () => gotoViewByName("List")}>
-      <Text>Go to List Screen</Text>
+      <Text style={styles.navigationTextStyle}>Go to List Screen</Text>
     </TouchableOpacity>
   }
 
@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}) => {
     return <TouchableOpacity
             style={styles.navigationLinkStyle}
             onPress={ () => gotoViewByName("Images")}>
-      <Text>Go to List of Images</Text>
+      <Text style={styles.navigationTextStyle}>Go to List Images</Text>
     </TouchableOpacity>
   }
 
@@ -41,7 +41,15 @@ const HomeScreen = ({navigation}) => {
     return <TouchableOpacity
             style={styles.navigationLinkStyle}
             onPress={ () => gotoViewByName("Counter")}>
-              <Text>Go to List of Counter screen</Text>
+              <Text style={styles.navigationTextStyle}>Go to Counter screen</Text>
+    </TouchableOpacity>
+  }
+
+  function GoToColorsScreen() {
+    return <TouchableOpacity
+        style={styles.navigationLinkStyle}
+        onPress={ () => gotoViewByName("Colors")} >
+        <Text style={styles.navigationTextStyle}>Go to List Colors screen</Text>
     </TouchableOpacity>
   }
 
@@ -54,6 +62,7 @@ const HomeScreen = ({navigation}) => {
           {gotoListScreen()}
           {gotoImagesListScreen()}
           <GoToCounterScreen/>
+          <GoToColorsScreen/>
         </View>
       </View>
     );
@@ -72,7 +81,17 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Vertically center the children (optional)
   },
   navigationLinkStyle: {
-    marginBottom: 20
+    marginBottom: 20,
+    width: 200,
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: 'gray',
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: 'rgba(22, 22, 22, 0.05)'
+  },
+  navigationTextStyle: {
+    color: 'blue',
   }
 });
 
