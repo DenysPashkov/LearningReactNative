@@ -21,12 +21,14 @@ function CounterScreen() {
                 onPress={ () => {
                     setCounter(getCounter - 1)
         }}>
-            <Text> - </Text>
+            <Text style={styles.test}> - </Text>
         </TouchableOpacity>
     }
 
     function Counter() {
-        return <Text style={styles.textStyler}> {getCounter} </Text>
+        return <View style={styles.counterViewStyler}>
+                <Text style={styles.counterStyler}> {getCounter} </Text>
+            </View>
     }
 
     return <View style={styles.viewStyler}>
@@ -49,15 +51,23 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         backgroundColor: "lightgrey",
-        alignContent: "center",
+        justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
-        borderColor: "gruy",
+        borderColor: "gray",
         borderRadius: 5
     },
-    textStyler: {
+    counterStyler: {
         fontWeight: "bold",
         fontSize: 20
+    },
+    counterViewStyler: {
+        width: 40,
+        height: 40,
+        borderWidth: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 20,
     }
 })
 
