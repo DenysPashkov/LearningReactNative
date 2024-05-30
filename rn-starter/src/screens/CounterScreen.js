@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 
 function reducer(state, action) {

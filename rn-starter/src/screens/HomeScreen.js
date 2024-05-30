@@ -61,6 +61,14 @@ const HomeScreen = ({navigation}) => {
     </TouchableOpacity>
   }
 
+  function GoToText() {
+    return <TouchableOpacity
+        style={styles.navigationLinkStyle}
+        onPress={ () => gotoViewByName("Text")} >
+        <Text style={styles.navigationTextStyle}>Go to Text screen</Text>
+    </TouchableOpacity>
+  }
+
   function returningView() {
     return (
       <View>
@@ -72,6 +80,7 @@ const HomeScreen = ({navigation}) => {
           <GoToCounterScreen/>
           <GoToColorsScreen/>
           <GoToColorManagement/>
+          <GoToText/>
         </View>
       </View>
     );
