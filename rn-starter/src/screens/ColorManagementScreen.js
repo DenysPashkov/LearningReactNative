@@ -7,15 +7,30 @@ function ColorManagementScreen() {
     const greenState = useState(125)
     const blueState = useState(125)
 
-    function colorValueSetter(colorName, [getState, setState]) {
-        return <View>
+    function increseState([getState, setState]) {
+        let newValue = getState + 10
+        if (newValue > 255) { newValue = 255 }
+        setState(newValue)
+    }
+
+    function decreseState([getState, setState]) {
+        let newValue = getState - 10
+        if (newValue < 0) { newValue = 0}
+        setState(newValue)
+    }
+
+    function colorValueSetter(colorName, state) {
+        let [getState] = state
+        return <View style={styler.colorValueCellStyler}>
             <Text>{colorName}</Text>
             <View style={styler.colorValueSetterStyler}>
-                <TouchableOpacity style={styler.buttonStyler} onPress={ () => { setState(getState - 10) }}>
+                <TouchableOpacity style={[styler.buttonStyler, {backgroundColor: 'red'}]} onPress={ () => { decreseState(state) }}>
                     <Text>-</Text>
                 </TouchableOpacity>
-                <Text>{getState}</Text>
-                <TouchableOpacity style={styler.buttonStyler} onPress={ () => { setState(getState + 10) }}>
+                <View style={styler.colorIntensityTextStyler}>
+                    <Text>{getState}</Text>
+                </View>
+                <TouchableOpacity style={[styler.buttonStyler, {backgroundColor: 'green'}]} onPress={ () => { increseState(state) }}>
                     <Text>+</Text>
                 </TouchableOpacity>
             </View>
@@ -23,7 +38,7 @@ function ColorManagementScreen() {
     }
 
     function ColorToUpdate() {
-        return <View style={[styler.colorToUpdateViewStyle, {backgroundColor: `rgb(${redState[0]},${greenState[0]}.${blueState[0]})`}]}></View>
+        return <View style={[styler.colorToUpdateViewStyle, {backgroundColor: `rgb(${redState[0]},${greenState[0]},${blueState[0]})`}]}></View>
     }
 
     return <View>
@@ -36,23 +51,39 @@ function ColorManagementScreen() {
 
 const styler = StyleSheet.create({
     colorToUpdateViewStyle: {
-        width: 30,
-        height: 30
+        height: 100,
+        alignSelf: 'stretch',
+        flexDirection: 'row',
+        marginTop: 50
+        // flex: 1,
+    },
+    colorValueCellStyler: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginVertical: 10,
+        paddingVertical: 10,
+        borderTopWidth: 1,
+        borderBottomWidth: 1
     },
     colorValueSetterStyler: {
         flexDirection: 'row',
-        gap: 20,
         justifyContent: 'center',
-        alignItems: 'center',
-        margin: 20
+        alignItems: 'center'
     },
     buttonStyler: {
-        width: 25,
-        height: 25,
+        width: 45,
+        height: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 1,
-        borderRadius: 20
+        borderWidth: 1
+    },
+    colorIntensityTextStyler: {
+        height: 30,
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderTopWidth: 1,
+        borderBottomWidth: 1
     }
 })
 
