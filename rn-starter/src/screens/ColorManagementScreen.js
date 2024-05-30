@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet} from 'react-native'
 
+const VALUTE_UPDATE = 10
+
 function ColorManagementScreen() {
 
     const redState = useState(125)
     const greenState = useState(125)
     const blueState = useState(125)
 
-    function increseState([getState, setState]) {
-        let newValue = getState + 10
-        if (newValue > 255) { newValue = 255 }
-        setState(newValue)
-    }
-
-    function decreseState([getState, setState]) {
-        let newValue = getState - 10
-        if (newValue < 0) { newValue = 0}
+    function updateState(value, [getState, setState]) {
+        let newValue = getState + value
+        if (newValue > 255 ) { newValue = 255 }
+        if (newValue < 0 ) { newValue = 0 } 
         setState(newValue)
     }
 
@@ -24,13 +21,13 @@ function ColorManagementScreen() {
         return <View style={styler.colorValueCellStyler}>
             <Text>{colorName}</Text>
             <View style={styler.colorValueSetterStyler}>
-                <TouchableOpacity style={[styler.buttonStyler, {backgroundColor: 'red'}]} onPress={ () => { decreseState(state) }}>
+                <TouchableOpacity style={[styler.buttonStyler, {backgroundColor: 'red'}]} onPress={ () => { updateState(-VALUTE_UPDATE, state) }}>
                     <Text>-</Text>
                 </TouchableOpacity>
                 <View style={styler.colorIntensityTextStyler}>
                     <Text>{getState}</Text>
                 </View>
-                <TouchableOpacity style={[styler.buttonStyler, {backgroundColor: 'green'}]} onPress={ () => { increseState(state) }}>
+                <TouchableOpacity style={[styler.buttonStyler, {backgroundColor: 'green'}]} onPress={ () => { updateState(VALUTE_UPDATE, state) }}>
                     <Text>+</Text>
                 </TouchableOpacity>
             </View>

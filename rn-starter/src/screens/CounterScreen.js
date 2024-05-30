@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+
+function reducer(state, action) {
+    // action === { type, payload }
+    switch (action.type) {
+        case 'increse_Counter':
+            return {...state, counter: state.counter + action.payload}
+        case 'decrese_Counter':
+            return {...state, counter: state.counter - action.payload}
+        default:
+            return state
+    }
+}
 
 function CounterScreen() {
 
-    const [getCounter, setCounter] = useState(0)
+    const [{counter}, dispatch] = useReducer(reducer, {counter: 0})
 
     function IncreseCounter() {
         return <TouchableOpacity 
                 style={styles.buttonStyler}
-                onPress={ () => {
-                    setCounter(getCounter + 1)
-        }}>
+                onPress={ () => { dispatch({ type: 'increse_Counter', payload: 1})}}>
             <Text> + </Text>
         </TouchableOpacity>
     }
@@ -18,16 +28,14 @@ function CounterScreen() {
     function DecreseCounter() {
         return <TouchableOpacity 
                 style={styles.buttonStyler}
-                onPress={ () => {
-                    setCounter(getCounter - 1)
-        }}>
+                onPress={ () => { dispatch({ type: 'decrese_Counter', payload: 1}) }}>
             <Text style={styles.test}> - </Text>
         </TouchableOpacity>
     }
 
     function Counter() {
         return <View style={styles.counterViewStyler}>
-                <Text style={styles.counterStyler}> {getCounter} </Text>
+                <Text style={styles.counterStyler}> {counter} </Text>
             </View>
     }
 
