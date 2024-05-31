@@ -69,6 +69,14 @@ const HomeScreen = ({navigation}) => {
     </TouchableOpacity>
   }
 
+  function GoToLayout() {
+    return <TouchableOpacity
+        style={styles.navigationLinkStyle}
+        onPress={ () => gotoViewByName("Layout")} >
+        <Text style={styles.navigationTextStyle}>Go to Layout screen</Text>
+    </TouchableOpacity>
+  }
+
   function returningView() {
     return (
       <View>
@@ -81,6 +89,7 @@ const HomeScreen = ({navigation}) => {
           <GoToColorsScreen/>
           <GoToColorManagement/>
           <GoToText/>
+          <GoToLayout/>
         </View>
       </View>
     );

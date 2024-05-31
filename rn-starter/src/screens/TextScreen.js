@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import {View, Text, StyleSheet, TextInput} from 'react-native'
 
 function TextScreen() {
 
-    function TextInputComponent() {
-        return <View>
-            <Text>Insert the text: </Text>
-            <TextInput 
-                autoCapitalize="none"
-                autoCorrect={false} 
-            />
-        </View>
-    }
+    const [getText, setState] = useState("")
     
     function TextOutputComponent() {
         return <View>
-            <Text>You have wrote: </Text>
+            { getText.length > 5 ? null : <Text style={styles.errorStyle}>Your password should be longer then 5 character</Text> }
         </View>
     }
-    return <Text>Hello</Text>
+
+    return <View>
+        <Text style={styles.title}>Enter Password: </Text>
+        <TextInput 
+            style={styles.textInputStyler}
+            autoCapitalize="none"
+            autoCorrect={false} 
+            value={getText}
+            onChangeText={ (value) => setState(value) }
+        />
+
+        <TextOutputComponent/>
+    </View>
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    textInputStyler: {
+        borderWidth: 1,
+        padding: 5,
+        marginHorizontal: 10
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginHorizontal: 10,
+        paddingBottom: 20
+    }, 
+    errorStyle: {
+        fontSize: 10,
+        color: 'red',
+        marginHorizontal: 10,
+        paddingTop: 5
+    }
+})
 
 export default TextScreen
