@@ -1,24 +1,26 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
 
-function ResturantsList() {
-    function Cell({item}) {
-        
-        console.log(item)
+function ResturantsList({resturantsList, title}) {
+    function Cell({resturant}) {
         return <View style={styler.cellStyler}>
-            <View style={styler.imageStyler}/>
-            <Text style={styler.resturantNameStyler}>Ristorante risottaro</Text>
-            <Text style={styler.resturantInformationStyler}>{item}.5 Stars, 234 Review</Text>
+            <Image style={styler.imageStyler} source={{uri: resturant.image_url}}/>
+            <Text style={styler.resturantNameStyler}>{resturant.name}</Text>
+            <Text style={styler.resturantInformationStyler}>{resturant.rating} Stars, {resturant.review_count} Review</Text>
         </View>
     }
 
-    return <FlatList 
-    contentContainerStyle={styler.listStyler} 
-    horizontal data={[1,2,3]} 
-    showsHorizontalScrollIndicator={false} 
-    renderItem={ ({item}) => <View>
-        <Cell item={item}/>
-        </View>}/>
+    return <View>
+        <Text style={styler.titleStyler}>{title}</Text>
+        <FlatList 
+        contentContainerStyle={styler.listStyler} 
+        horizontal data={resturantsList} 
+        showsHorizontalScrollIndicator={false} 
+        renderItem={ ({item}) => <View>
+                <Cell resturant={item}/>
+            </View>}
+        />
+    </View>
 }
 
 const styler = StyleSheet.create({
@@ -27,7 +29,7 @@ const styler = StyleSheet.create({
     }, imageStyler: {
         width: 240,
         height: 140,
-        backgroundColor: 'red',
+        backgroundColor: 'lightGray',
     }, resturantNameStyler : {
         fontWeight: 'bold',
         fontSize: 22,
@@ -41,6 +43,12 @@ const styler = StyleSheet.create({
     }, listStyler: {
         gap: 16,
         paddingHorizontal: 20,
+    },
+    titleStyler: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        marginStart: 20,
+        marginBottom: 10
     }
 })
 
