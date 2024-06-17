@@ -4,13 +4,17 @@ import { useNavigation  } from "@react-navigation/native";
 function ResturantsList({resturantsList, title}) {
     const navigation = useNavigation()
     function Cell({resturant}) {
-        return <TouchableOpacity onPress={ () => { navigation.navigate('Detail', {restur: "resturant"}) } }>
+        return <TouchableOpacity onPress={ () => { navigation.navigate('Detail', {id: resturant.id}) } }>
             <View style={styler.cellStyler}>
                 <Image style={styler.imageStyler} source={{uri: resturant.image_url}}/>
                 <Text style={styler.resturantNameStyler}>{resturant.name}</Text>
                 <Text style={styler.resturantInformationStyler}>{resturant.rating} Stars, {resturant.review_count} Review</Text>
             </View>
         </TouchableOpacity>
+    }
+
+    if (resturantsList.length == 0) {
+        return null
     }
 
     return <View>

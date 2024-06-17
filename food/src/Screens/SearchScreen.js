@@ -15,7 +15,6 @@ function SearchScreen() {
     }
 
     function filterResturantsForPrice(item, priceRange) {
-
         const returnValue = item.price == priceRange
         return returnValue
     }

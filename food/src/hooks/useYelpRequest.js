@@ -11,18 +11,18 @@ export default () => {
                 params: {
                     limit: 49,
                     term: searchTerm,
-                    location: 'Rome'
+                    location: 'Naples'
                 }
             })
             setResults(response.data.businesses)
         } catch (err) {
             setErrorMessage("An error has appeared, prepare for battle!")
         }
-
     }
+
     
     useEffect( () => {
-        makeRequest('pasta')
+        makeRequest('')
     }, [])
 
     return [makeRequest, getResults, getErrorMessage]
