@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "navigation": "^6.2.0",
+    "react-navigation": "^5.0.0"
+  }
+}
