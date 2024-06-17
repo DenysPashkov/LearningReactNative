@@ -1,13 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
-
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native'
+import { useNavigation  } from "@react-navigation/native";
 function ResturantsList({resturantsList, title}) {
+    const navigation = useNavigation()
     function Cell({resturant}) {
-        return <View style={styler.cellStyler}>
-            <Image style={styler.imageStyler} source={{uri: resturant.image_url}}/>
-            <Text style={styler.resturantNameStyler}>{resturant.name}</Text>
-            <Text style={styler.resturantInformationStyler}>{resturant.rating} Stars, {resturant.review_count} Review</Text>
-        </View>
+        return <TouchableOpacity onPress={ () => { navigation.navigate('Detail', {restur: "resturant"}) } }>
+            <View style={styler.cellStyler}>
+                <Image style={styler.imageStyler} source={{uri: resturant.image_url}}/>
+                <Text style={styler.resturantNameStyler}>{resturant.name}</Text>
+                <Text style={styler.resturantInformationStyler}>{resturant.rating} Stars, {resturant.review_count} Review</Text>
+            </View>
+        </TouchableOpacity>
     }
 
     return <View>
